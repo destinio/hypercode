@@ -8,3 +8,15 @@ export const contacts = [
   { name: 'bob', phone: '222-2222-2222' },
   { name: 'charlie', phone: '333-3333-3333' },
 ] as Contact[]
+
+export function getAllContacts() {
+  return contacts
+}
+
+export function getFilteredContacts(query: string) {
+  const filtered = contacts.filter(contact =>
+    contact.name.includes(query.toString()),
+  )
+
+  return filtered.length === 0 ? null : filtered
+}
