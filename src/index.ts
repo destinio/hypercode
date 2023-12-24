@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { contactRoute } from './routes/contacts.js'
+import { contactDetailRoute, contactsRoute } from './routes/contacts.js'
 import { mainRoute } from './routes/index.js'
 import path from 'path'
 
@@ -14,7 +14,8 @@ const currentDirectory = process.cwd()
 app.use('/css', express.static(path.join(currentDirectory, 'public', 'css')))
 
 app.get('/', mainRoute)
-app.get('/contacts', contactRoute)
+app.get('/contacts/:name', contactDetailRoute)
+app.get('/contacts', contactsRoute)
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
